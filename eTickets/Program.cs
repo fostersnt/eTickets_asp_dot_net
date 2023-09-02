@@ -2,6 +2,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+//Adding apsettings.json file
+builder.Configuration.AddJsonFile('appsettions.json');
 
 var app = builder.Build();
 

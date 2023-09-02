@@ -1,21 +1,24 @@
 ﻿using eTickets.Models;
+using eTickets.Settings;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Diagnostics;
 
 namespace eTickets.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly AppSettings _appSettings;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IOptions<AppSettings> appSettings)
         {
-            _logger = logger;
+            _appSettings = appSettings.Value;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var model = new Actor { Bio = _appSettings.email};
+            return View(model);
         }
 
         public IActionResult Privacy()

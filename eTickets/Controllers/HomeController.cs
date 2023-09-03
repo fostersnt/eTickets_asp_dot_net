@@ -18,6 +18,7 @@ namespace eTickets.Controllers
 
         public IActionResult Index()
         {
+            ViewData["title"] = "My Home Page";
             int score = Validations.sum(2, 5);
             var model = new Actor { 
                 Bio = _appSettings.email,

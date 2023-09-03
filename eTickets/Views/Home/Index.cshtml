@@ -5,6 +5,37 @@
 @ViewData["title"]
 
 <div class="text-center">
-    <h1 class="display-4">Welcome @Model.Id</h1>
+    <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+        <div class="">
+            <table class="table table-responsive" id="actor_table">
+                <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Profile Image</th>
+                </thead>
+                <tbody>
+                    @foreach(var data in Model)
+                    {
+                    <tr>
+                        <td>@data.Id</td>
+                        <td>@data.Name</td>
+                        <td>@data.Id</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+<script>
+    var js = jQuery.noConflict(true);
+    js(document).ready(function(){
+        js("#actor_table").DataTable();
+    })
+</script>

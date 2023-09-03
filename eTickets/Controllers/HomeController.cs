@@ -1,4 +1,5 @@
-﻿using eTickets.Models;
+﻿using eTickets.Functions;
+using eTickets.Models;
 using eTickets.Settings;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -17,7 +18,11 @@ namespace eTickets.Controllers
 
         public IActionResult Index()
         {
-            var model = new Actor { Bio = _appSettings.email};
+            int score = Validations.sum(2, 5);
+            var model = new Actor { 
+                Bio = _appSettings.email,
+                Id = score,
+            };
             return View(model);
         }
 

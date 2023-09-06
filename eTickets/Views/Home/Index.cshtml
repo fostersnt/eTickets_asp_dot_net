@@ -1,4 +1,6 @@
-﻿@*@{
+﻿@model eTickets.Models.Actor
+@*@model List<Actor>*@
+@*@{
     ViewData["Title"] = "Home Page";
 }*@
 
@@ -10,7 +12,28 @@
 </div>
 
         <div class="">
-            <table class="table table-responsive" id="actor_table">
+            <form asp-action="create">
+                <div asp-validation-summary="ModelOnly"></div>
+                <div>
+                    <label asp-for="Bio">Bio</label>
+                    <input asp-for="Bio" /><br />
+                    <span asp-validation-for="Bio" style="color:red"></span>
+                </div>
+        <div>
+            <label asp-for="ProfilePictureURL">Bio</label>
+            <input asp-for="ProfilePictureURL" /><br />
+            <span asp-validation-for="ProfilePictureURL" style="color:red"></span>
+        </div>
+        <div>
+            <label asp-for="Name">Bio</label>
+            <input asp-for="Name" /><br />
+            <span asp-validation-for="Name" style="color:red"></span>
+        </div>
+                <div>
+                    <input type="submit" value="Register" />
+                </div>
+            </form>
+            @*<table class="table table-responsive" id="actor_table">
                 <thead>
                     <th>ID</th>
                     <th>Name</th>
@@ -26,7 +49,7 @@
                     </tr>
                     }
                 </tbody>
-            </table>
+            </table>*@
         </div>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -8,6 +8,8 @@ using System.Diagnostics;
 
 namespace eTickets.Controllers
 {
+    //[BindProperties]
+
     public class HomeController : Controller
     {
         private readonly AppSettings _appSettings;
@@ -21,8 +23,9 @@ namespace eTickets.Controllers
 
         public IActionResult Index()
         {
+            //ModelState.Clear();
             ViewData["title"] = "My Home Page";
-            int score = Validations.sum(2, 5);
+            //int score = Validations.sum(2, 5);
             List<Actor> actors = new List<Actor>
             {
                 new Actor
@@ -34,12 +37,23 @@ namespace eTickets.Controllers
             };
 
             //file processing function call
-            string root_directory = _hostingEnvironment.ContentRootPath;
-            string sub_directory = Path.Combine(root_directory, "Errors");
-            string file_path = Path.Combine(root_directory, "Errors", "message.txt");
-            bool check = FileProcessing.log_Error_Message("\nThe name of my school is Ofori Hills Academy");
+            //string root_directory = _hostingEnvironment.ContentRootPath;
+            //string sub_directory = Path.Combine(root_directory, "Errors");
+            //string file_path = Path.Combine(root_directory, "Errors", "message.txt");
+            //bool check = FileProcessing.log_Error_Message("\nThe name of my school is Ofori Hills Academy");
             
-                return View(actors);
+                return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> create([Bind("Bio")] Actor actor)
+        {
+            //ModelState.Clear();
+            if (ModelState.IsValid)
+            {
+                return View();
+            }
+            return View("Index", actor);
         }
 
         public IActionResult Privacy()
